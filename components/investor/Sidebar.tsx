@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import {
   TbChevronsLeft, TbLayoutDashboard, TbUser, TbBriefcase,
-  TbCoin, TbChartBar, TbFileText, TbLogout,
+  TbCoin, TbChartBar, TbFileText, TbLogout, TbSearch,
 } from "react-icons/tb";
 import logo1 from "@/public/assets/logo1.png";
 import { FONT } from "./shared";
@@ -21,8 +21,9 @@ const NAV_GROUPS = [
   {
     label: "ASSETS",
     items: [
-      { key: "portfolio",  label: "Portfolio", Icon: TbBriefcase },
-      { key: "token",      label: "Token",     Icon: TbCoin      },
+      { key: "portfolio",  label: "Portfolio",       Icon: TbBriefcase },
+      { key: "token",      label: "Token",           Icon: TbCoin      },
+      { key: "due-diligence", label: "Due Diligence", Icon: TbSearch    },
     ],
   },
   {
@@ -45,6 +46,7 @@ const ROUTES: Record<string, string> = {
   profile: "/investors/profile",
   portfolio: "/investors/portfolio",
   token: "/investors/token",
+  "due-diligence": "/investors/due-diligence",
   analytics: "/investors/analytics",
   documents: "/investors/documents",
 };
