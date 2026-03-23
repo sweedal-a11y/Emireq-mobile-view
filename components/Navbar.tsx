@@ -12,6 +12,7 @@ const NAVY = "#152B5A";
 
 const NAV_ITEMS = [
   { label: "Home", href: "/" },
+  { label: "Startups", href: "/startups" },
   { label: "Tokenize", href: "/tokenize" },
   { label: "Investors", href: "/investors" },
   { label: "Events", href: "/events" },
@@ -23,7 +24,7 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
-  const activeTab: "startups" | "investors" = "investors";
+  const activeTab: "startups" | "investors" = pathname.startsWith("/investors") ? "investors" : pathname.startsWith("/startups") ? "startups" : "startups";
 
   return (
     <>
@@ -39,7 +40,7 @@ export default function Navbar() {
           {(["startups", "investors"] as const).map((tab) => {
             const active = activeTab === tab;
             return (
-              <button key={tab} onClick={() => router.push(tab === "investors" ? "/investors" : "/")}
+              <button key={tab} onClick={() => router.push(tab === "investors" ? "/investors" : "/startups")}
                 style={{ padding: "9px 20px", borderRadius: 999, fontSize: 14, fontWeight: 500, cursor: "pointer", border: active ? "none" : "1px solid #C1C1C1", background: active ? NAVY : "#fff", color: active ? "#fff" : "#717182", transition: "all 0.18s", letterSpacing: "-0.01em", WebkitTapHighlightColor: "transparent", boxShadow: active ? "0 4px 12px rgba(21,43,90,0.18)" : "none", whiteSpace: "nowrap" }}>
                 {tab.charAt(0).toUpperCase() + tab.slice(1)}
               </button>
